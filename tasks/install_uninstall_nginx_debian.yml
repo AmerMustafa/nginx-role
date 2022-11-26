@@ -1,0 +1,16 @@
+---
+- name: install nginx on Debian
+  apt:
+    name: "{{ nginx_version }}"
+    state: "{{ statenginx }}"
+    force_apt_get: true
+  when: (statenginx == "present") or (statenginx == "latest")
+
+- name: Uninstall nginx on Debian
+  apt:
+    name: "{{ nginx_version }}"
+    state: "{{ statenginx }}"
+    force_apt_get: true
+  when: statenginx == "absent"
+
+

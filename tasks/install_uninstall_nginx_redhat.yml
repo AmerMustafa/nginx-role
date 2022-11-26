@@ -1,0 +1,13 @@
+---
+- name: install nginx on redhat
+  yum:
+    name: "{{ nginx_version }}"
+    state: "{{ statenginx }}"
+  when: (statenginx == "present") or (statenginx == "latest")
+
+- name: uninstall nginx on redhat
+  yum:
+    name: "{{ nginx_version }}"
+    state: "{{ statenginx }}"
+  when: statenginx == "absent"
+

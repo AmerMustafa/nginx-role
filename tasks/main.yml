@@ -1,0 +1,13 @@
+---
+# tasks file for nginx
+- name: Include variables
+  include_vars: "{{ ansible_os_family }}.yml"
+
+- name: Install nginx for Debain family
+  import_tasks: install_uninstall_nginx_debian.yml
+  when: ansible_os_family == 'Debian'
+  
+- name: install/uninstall nginx for Red Hat family
+  import_tasks: install_uninstall_nginx_redhat.yml
+  when: ansible_os_family == 'RedHat'
+
